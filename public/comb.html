@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>動画変換</title>
+    <link rel="stylesheet" href="./css/style_form.css" />
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header id="header">
+        <nav>
+          <h1>動画結合</h1>
+        </nav>
+      </header>
+      <main>
+        <h2>動画①の後ろに動画②をつけます。</h2>
+        <p>変換後自動的にダウンロードされます</p>
+        <div class="wrap">
+          <form
+            id="input_form"
+            action="/comb_conv"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <ul>
+              <li>
+                <h3>動画1</h3>
+                <input type="file" name="file1" multiple />
+              </li>
+              <li>
+                <h3>動画2</h3>
+                <input type="file" name="file2" multiple />
+              </li>
+            </ul>
+            <div class="wrap_btn">
+              <button id="btn_exe" type="submit">結合</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

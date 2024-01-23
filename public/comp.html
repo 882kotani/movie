@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>動画変換</title>
+    <link rel="stylesheet" href="./css/style_form.css" />
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header id="header">
+        <nav>
+          <h1>動画変換</h1>
+        </nav>
+      </header>
+      <main>
+        <h2>ビットレート変換</h2>
+        <p>変換後自動的にダウンロードされます</p>
+        <div class="wrap">
+          <form
+            id="input_form"
+            action="/comp_conv"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <ul>
+              <li>
+                <input type="file" name="file" />
+              </li>
+              <li>
+                <label for=""
+                  >ビットレート[kbps]
+                  <input type="text" name="bitrate" placeholder="700"
+                /></label>
+              </li>
+            </ul>
+
+            <div class="wrap_btn">
+              <button id="btn_exe" type="submit">圧縮</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <style></style>
+  </body>
+</html>

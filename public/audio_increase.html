@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>動画変換</title>
+    <link rel="stylesheet" href="./css/style_form.css" />
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header id="header">
+        <nav>
+          <h1>音量を上げる</h1>
+        </nav>
+      </header>
+      <main>
+        <h2>音量変換</h2>
+        <p>変換後自動的にダウンロードされます</p>
+        <div class="wrap">
+          <form
+            id="input_form"
+            action="/audio_increase_conv"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <ul>
+              <li>
+                <input type="file" name="file" />
+              </li>
+              <li>
+                <label for=""
+                  >音量[dB] <input type="text" name="volume" placeholder="6"
+                /></label>
+              </li>
+            </ul>
+
+            <div class="wrap_btn">
+              <button id="btn_exe" type="submit">変換</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <style></style>
+  </body>
+</html>
