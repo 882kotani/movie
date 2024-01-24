@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -14,21 +14,30 @@
         </nav>
       </header>
       <main>
-        <form id="input_text" action="/comp" method="POST">
-          <button id="btn_index" type="submit">圧縮する</button>
-        </form>
-        <form id="input_text" action="/conv" method="POST">
-          <button id="btn_index" type="submit">変換する</button>
-        </form>
-        <form id="input_text" action="/cut" method="POST">
-          <button id="btn_index" type="submit">切り取る</button>
-        </form>
-        <form id="input_text" action="/comb" method="POST">
-          <button id="btn_index" type="submit">結合する</button>
-        </form>
-        <form id="input_text" action="/audio_increase" method="POST">
-          <button id="btn_index" type="submit">音量を上げる</button>
-        </form>
+        <h2>動画・音声</h2>
+        <div class="wrap_movie">
+          <form id="input_text" action="/comp" method="POST">
+            <button id="btn_index" type="submit">圧縮する</button>
+          </form>
+          <form id="input_text" action="/conv" method="POST">
+            <button id="btn_index" type="submit">変換する</button>
+          </form>
+          <form id="input_text" action="/cut" method="POST">
+            <button id="btn_index" type="submit">切り取る</button>
+          </form>
+          <form id="input_text" action="/comb" method="POST">
+            <button id="btn_index" type="submit">結合する</button>
+          </form>
+          <form id="input_text" action="/audio_increase" method="POST">
+            <button id="btn_index" type="submit">音量を上げる</button>
+          </form>
+        </div>
+        <h2>画像</h2>
+        <div class="wrap_image">
+          <form id="input_text" action="/image_resize" method="POST">
+            <button id="btn_index" type="submit">リサイズする</button>
+          </form>
+        </div>
       </main>
     </div>
   </body>

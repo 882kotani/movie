@@ -8,21 +8,18 @@ const port = 8000;
 
 //起動確認
 app.listen(port, function () {
-  console.log(`サーバー起動 ${port}ポート`);
+  console.log(`サーバー起動 ${port}ポート\r\nhttp://localhost:${port}`);
 });
 
 // パス取得
 app.use(express.static(path.join(__dirname, "public")));
-const path_original_media = "public/uploads/"; //元素材のアップロード先
+const path_origin_media = "public/uploads/"; //元素材のアップロード先
 const path_conv_media = "public/converted/"; //変換後素材のアップロード先
-
-// タイムスタンプ取得
-let timestamp = Date.now();
 
 //アップロード
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path_original_media);
+    cb(null, path_origin_media);
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -31,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //-----------ルーティング-----------
-//インデックス
+//初期ページへ遷移
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
@@ -58,13 +55,14 @@ app.post("/audio_increase", (req, res) => {
 
 //------------処理------------
 app.post("/comp_conv", upload.single("file"), function (req, res, next) {
+  let timestamp = Date.now() / 1000; // タイムスタンプ取得
   console.log(req.file);
   const i_filename = req.file.originalname;
   const bitrate = req.body.bitrate + "k";
   const o_filename = "sizedown_" + timestamp + "_" + i_filename;
   let command =
     "ffmpeg -i " +
-    path_original_media +
+    path_origin_media +
     i_filename +
     " -b:v " +
     bitrate +
@@ -74,11 +72,12 @@ app.post("/comp_conv", upload.single("file"), function (req, res, next) {
     " &";
   const execSync = require("child_process").execSync;
   const stdout = execSync(command);
-  res.download(path_conv_media + o_filename);
-  deleteFile(path_original_media + i_filename);
+  res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
+  deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
 });
 // 変換
 app.post("/conv_conv", upload.single("file"), function (req, res, next) {
+  let timestamp = Date.now() / 1000; // タイムスタンプ取得
   const i_filename = req.file.originalname;
   let o_filename = "";
   if (req.body.conv_radio == "MOV_to_mp4") o_filename = timestamp + ".mp4";
@@ -86,7 +85,7 @@ app.post("/conv_conv", upload.single("file"), function (req, res, next) {
 
   const command =
     "ffmpeg -i " +
-    path_original_media +
+    path_origin_media +
     i_filename +
     " " +
     path_conv_media +
@@ -94,11 +93,12 @@ app.post("/conv_conv", upload.single("file"), function (req, res, next) {
     " &";
   const execSync = require("child_process").execSync;
   const stdout = execSync(command);
-  res.download(path_conv_media + o_filename);
-  deleteFile(path_original_media + i_filename);
+  res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
+  deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
 });
 // カット
 app.post("/cut_conv", upload.single("file"), function (req, res, next) {
+  let timestamp = Date.now() / 1000; // タイムスタンプ取得
   console.log(req.file);
   const i_filename = req.file.originalname;
   const o_filename = "out_cut_" + timestamp + "_" + i_filename;
@@ -124,7 +124,7 @@ app.post("/cut_conv", upload.single("file"), function (req, res, next) {
     " -to " +
     fin_time +
     " -i " +
-    path_original_media +
+    path_origin_media +
     i_filename +
     " -c copy " +
     path_conv_media +
@@ -133,8 +133,8 @@ app.post("/cut_conv", upload.single("file"), function (req, res, next) {
   const execSync = require("child_process").execSync;
   const stdout = execSync(command);
 
-  res.download(path_conv_media + o_filename);
-  deleteFile(path_original_media + i_filename);
+  res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
+  deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
 });
 
 // 結合
@@ -142,7 +142,7 @@ app.post(
   "/comb_conv",
   upload.fields([{ name: "file1" }, { name: "file2" }]),
   function (req, res, next) {
-    // console.log(req.files);
+    let timestamp = Date.now() / 1000; // タイムスタンプ取得
     const file1Array = req.files["file1"];
     const file2Array = req.files["file2"];
     const file1Names = file1Array.map((file) => file.originalname);
@@ -160,10 +160,8 @@ app.post(
       " &";
     const execSync = require("child_process").execSync;
     const stdout = execSync(command);
-    res.download(path_conv_media + o_filename);
-    deleteFile(path_original_media + i_filename);
-    // deleteFile(file1Paths);
-    // deleteFile(file2Paths);
+    res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
+    deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
   }
 );
 
@@ -172,13 +170,14 @@ app.post(
   "/audio_increase_conv",
   upload.single("file"),
   function (req, res, next) {
+    let timestamp = Date.now() / 1000; // タイムスタンプ取得
     console.log(req.file);
     const i_filename = req.file.originalname;
     const vol_num = req.body.volume;
     const o_filename = "out_volup_" + timestamp + "_" + i_filename;
     let command =
       "ffmpeg -i " +
-      path_original_media +
+      path_origin_media +
       i_filename +
       " -af volume=" +
       vol_num +
@@ -188,19 +187,23 @@ app.post(
       " &";
     const execSync = require("child_process").execSync;
     const stdout = execSync(command);
-
-    res.download(path_conv_media + o_filename);
-    deleteFile(path_original_media + i_filename);
+    res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
+    deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+    output_log();
   }
 );
 
-function deleteFile(filePath) {
+// ファイルを削除する関数
+function deleteFile(path) {
   try {
-    fs.unlinkSync(filePath);
-    // return true;
-    console.log(filePath + " 削除しました。");
+    fs.unlinkSync(path);
+    console.log(path + " 削除しました。");
   } catch (err) {
-    // return false;
-    console.log(filePath + " 削除失敗しました。");
+    console.log(path + " 削除失敗しました。");
   }
+}
+
+// ログを出力する関数
+function output_log() {
+  fs.writeFileSync("public/log/log.txt", "logファイルです");
 }
