@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>動画変換</title>
     <link rel="stylesheet" href="./css/style_form.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
     <script src="./js/main.js"></script>
   </head>
   <body>
@@ -24,22 +25,18 @@
             method="POST"
             enctype="multipart/form-data"
           >
-            <ul>
-              <li>
-                <div class="input_area">
-                  <!-- <p>Drag and drop a file or click</p> -->
-                  <input class="input_form" type="file" name="file" />
-                </div>
-              </li>
-              <li>
-                <input type="radio" name="conv_radio" value="MOV_to_mp4" />MOV
-                to mp4
-              </li>
-              <li>
-                <input type="radio" name="conv_radio" value="ma4_to_mp3" />m4a
-                to mp3
-              </li>
-            </ul>
+            <div class="input_area">
+              <!-- <p>Drag and drop a file or click</p> -->
+              <input class="input_file" type="file" name="file" />
+            </div>
+            <div>
+              <input type="radio" name="conv_radio" value="MOV_to_mp4" />MOV to
+              mp4
+            </div>
+            <div>
+              <input type="radio" name="conv_radio" value="ma4_to_mp3" />m4a to
+              mp3
+            </div>
 
             <div class="wrap_btn">
               <button id="btn_exe" type="submit">変換</button>

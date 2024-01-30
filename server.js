@@ -54,11 +54,12 @@ app.post("/audio_increase", (req, res) => {
 });
 
 //------------処理------------
+// 圧縮
 app.post("/comp_conv", upload.single("file"), function (req, res, next) {
-  let timestamp = Date.now() / 1000; // タイムスタンプ取得
+  let timestamp = Date.now(); // タイムスタンプ取得
   console.log(req.file);
   const i_filename = req.file.originalname;
-  const bitrate = req.body.bitrate + "k";
+  const bitrate = req.body.bitrate;
   const o_filename = "sizedown_" + timestamp + "_" + i_filename;
   let command =
     "ffmpeg -i " +
@@ -66,7 +67,7 @@ app.post("/comp_conv", upload.single("file"), function (req, res, next) {
     i_filename +
     " -b:v " +
     bitrate +
-    " " +
+    "k " +
     path_conv_media +
     o_filename +
     " &";
@@ -77,7 +78,7 @@ app.post("/comp_conv", upload.single("file"), function (req, res, next) {
 });
 // 変換
 app.post("/conv_conv", upload.single("file"), function (req, res, next) {
-  let timestamp = Date.now() / 1000; // タイムスタンプ取得
+  let timestamp = Date.now(); // タイムスタンプ取得
   const i_filename = req.file.originalname;
   let o_filename = "";
   if (req.body.conv_radio == "MOV_to_mp4") o_filename = timestamp + ".mp4";
@@ -95,10 +96,11 @@ app.post("/conv_conv", upload.single("file"), function (req, res, next) {
   const stdout = execSync(command);
   res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
   deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+  output_log();
 });
 // カット
 app.post("/cut_conv", upload.single("file"), function (req, res, next) {
-  let timestamp = Date.now() / 1000; // タイムスタンプ取得
+  let timestamp = Date.now(); // タイムスタンプ取得
   console.log(req.file);
   const i_filename = req.file.originalname;
   const o_filename = "out_cut_" + timestamp + "_" + i_filename;
@@ -135,6 +137,7 @@ app.post("/cut_conv", upload.single("file"), function (req, res, next) {
 
   res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
   deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+  output_log();
 });
 
 // 結合
@@ -142,7 +145,7 @@ app.post(
   "/comb_conv",
   upload.fields([{ name: "file1" }, { name: "file2" }]),
   function (req, res, next) {
-    let timestamp = Date.now() / 1000; // タイムスタンプ取得
+    let timestamp = Date.now(); // タイムスタンプ取得
     const file1Array = req.files["file1"];
     const file2Array = req.files["file2"];
     const file1Names = file1Array.map((file) => file.originalname);
@@ -162,6 +165,7 @@ app.post(
     const stdout = execSync(command);
     res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
     deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+    output_log();
   }
 );
 
@@ -170,7 +174,7 @@ app.post(
   "/audio_increase_conv",
   upload.single("file"),
   function (req, res, next) {
-    let timestamp = Date.now() / 1000; // タイムスタンプ取得
+    let timestamp = Date.now(); // タイムスタンプ取得
     console.log(req.file);
     const i_filename = req.file.originalname;
     const vol_num = req.body.volume;

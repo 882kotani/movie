@@ -21,13 +21,15 @@ button:hover {
 
 ul li {
   list-style: none;
+  margin: 0 auto;
 }
 
 .container {
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #dfdcdc;
 }
 .container header {
   width: 100%;
@@ -37,6 +39,8 @@ ul li {
   justify-content: center;
   display: flex;
   border-bottom: solid 2px black;
+  background-color: black;
+  color: white;
 }
 .container header nav {
   width: 90%;
@@ -51,47 +55,52 @@ ul li {
   height: auto;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 .container main .wrap {
-  width: 100%;
+  width: 80%;
+  height: 100%;
   display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
 }
-.container main .wrap .input_area {
-  height: 200px;
+.container main .wrap #input_form {
+  min-height: 200px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+.container main .wrap #input_form .input_area {
+  height: 100%;
   width: 100%;
   border: 5px dot rgba(0, 0, 0, 0.6);
-  background-color: rgba(206, 206, 206, 0.6);
+  background-color: rgba(230, 230, 230, 0.6);
   margin: 0 auto;
+  text-align: center;
+  text-align: center;
 }
-.container main .wrap .input_area .input_form {
+.container main .wrap #input_form .input_area .input_file {
   height: 100%;
   width: 100%;
   opacity: 0;
 }
-.container main .wrap .input_form:hover {
+.container main .wrap #input_form .input_file {
   opacity: 0.5;
   cursor: pointer;
 }
-.container main .wrap .preview {
+.container main .wrap #input_form .preview {
   width: 100%;
   height: auto;
   max-height: 500px;
   margin: 10px;
 }
-.container main .wrap .wrap_btn {
+.container main .wrap #input_form .wrap_btn {
   width: 100%;
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
 }
-.container main .wrap .wrap_btn #btn_exe {
+.container main .wrap #input_form .wrap_btn #btn_exe {
   width: 100px;
   height: 50px;
   font-size: 16px;

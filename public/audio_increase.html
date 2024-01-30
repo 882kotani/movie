@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>動画変換</title>
     <link rel="stylesheet" href="./css/style_form.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
     <script src="./js/main.js"></script>
   </head>
   <body>
@@ -24,16 +25,12 @@
             method="POST"
             enctype="multipart/form-data"
           >
-            <ul>
-              <li>
-                <input type="file" name="file" />
-              </li>
-              <li>
-                <label for=""
-                  >音量[dB] <input type="text" name="volume" placeholder="6"
-                /></label>
-              </li>
-            </ul>
+            <div class="input_area">
+              <input class="input_file" type="file" name="file" />
+            </div>
+            <div>
+              音量[dB] <input type="text" name="volume" placeholder="6" />
+            </div>
 
             <div class="wrap_btn">
               <button id="btn_exe" type="submit">変換</button>
