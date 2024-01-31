@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //-----------ルーティング-----------
-//初期ページへ遷移
+//デフォルトページ
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
@@ -76,6 +76,7 @@ app.post("/comp_conv", upload.single("file"), function (req, res, next) {
   res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
   deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
 });
+
 // 変換
 app.post("/conv_conv", upload.single("file"), function (req, res, next) {
   let timestamp = Date.now(); // タイムスタンプ取得
@@ -98,6 +99,7 @@ app.post("/conv_conv", upload.single("file"), function (req, res, next) {
   deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
   output_log();
 });
+
 // カット
 app.post("/cut_conv", upload.single("file"), function (req, res, next) {
   let timestamp = Date.now(); // タイムスタンプ取得
@@ -169,7 +171,7 @@ app.post(
   }
 );
 
-// 音声レベルアップ
+// 音声レベルアップ（dBを入力）
 app.post(
   "/audio_increase_conv",
   upload.single("file"),
