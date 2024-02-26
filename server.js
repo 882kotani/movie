@@ -9,6 +9,8 @@ const port = 8000;
 //起動確認
 app.listen(port, function () {
   console.log(`サーバー起動 ${port}ポート\r\nhttp://localhost:${port}`);
+  CheckGen_dir("./public/uploads"); //変換前の動画をアップロードするディレクトリを生成
+  CheckGen_dir("./public/converted"); //変換後の動画をアップロードするディレクトリを生成
 });
 
 // パス取得
@@ -212,4 +214,11 @@ function deleteFile(path) {
 // ログを出力する関数
 function output_log() {
   fs.writeFileSync("public/log/log.txt", "logファイルです");
+}
+
+// ディレクトリの存在を確認・なければ生成する関数
+function CheckGen_dir(path) {
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path, { recursive: true });
+  }
 }
