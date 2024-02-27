@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>動画変換</title>
-    <link rel="stylesheet" href="./css/style_form.css" />
+    <link rel="stylesheet" href="./css/style_comb.css" />
     <link rel="stylesheet" href="./css/reset.css" />
     <script src="./js/main.js"></script>
   </head>
@@ -16,8 +16,7 @@
         </nav>
       </header>
       <main>
-        <h2>動画①の後ろに動画②をつけます。</h2>
-        <p>変換後自動的にダウンロードされます</p>
+        <p>動画①の後ろに動画②を結合します。</p>
         <div class="wrap">
           <form
             id="input_form"
@@ -25,25 +24,26 @@
             method="POST"
             enctype="multipart/form-data"
           >
-            <ul>
-              <li>
+            <div class="wrap_movie">
+              <div class="movie">
                 <h3>動画1</h3>
                 <div class="input_area">
                   <input class="input_file" type="file" name="file" />
                 </div>
-              </li>
-              <li>
+              </div>
+              <div class="movie">
                 <h3>動画2</h3>
                 <div class="input_area">
                   <input class="input_file" type="file" name="file" />
                 </div>
-              </li>
-            </ul>
+              </div>
+            </div>
             <div class="wrap_btn">
               <button id="btn_exe" type="submit">結合</button>
             </div>
           </form>
         </div>
+        <p>変換後自動的にダウンロードされます</p>
       </main>
     </div>
   </body>

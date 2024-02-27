@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>動画変換</title>
-    <link rel="stylesheet" href="./css/style_form.css" />
+    <link rel="stylesheet" href="./css/style_cut.css" />
     <link rel="stylesheet" href="./css/reset.css" />
     <script src="./js/main.js"></script>
   </head>
@@ -18,7 +18,6 @@
       <main>
         <p>変換後自動的にダウンロードされます</p>
         <div class="wrap">
-          <!-- <div class="left"> -->
           <form
             id="input_form"
             action="/cut_conv"
@@ -26,7 +25,6 @@
             enctype="multipart/form-data"
           >
               <div class="input_area">
-              <!-- <p>Drag and drop a file or click</p> -->
               <input
                 class="input_file"
                 type="file"
@@ -38,7 +36,7 @@
                 <video
                   id="videoPreview"
                   controls
-                  style="max-width: 100%; max-height: 300px"
+                  style="width: 100%; height: 100%;"
                 ></video>
               </div>
 
