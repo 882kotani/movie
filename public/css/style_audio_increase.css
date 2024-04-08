@@ -71,7 +71,7 @@ ul li {
   text-align: center;
 }
 .container main .wrap #input_form .input_area {
-  height: 40%;
+  height: 100%;
   width: 100%;
   border: 5px dot rgba(0, 0, 0, 0.6);
   background-color: rgba(230, 230, 230, 0.6);
@@ -80,7 +80,7 @@ ul li {
   text-align: center;
 }
 .container main .wrap #input_form .input_area .input_file {
-  height: 50%;
+  height: 100%;
   width: 100%;
   opacity: 0;
 }

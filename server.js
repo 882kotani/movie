@@ -4,13 +4,13 @@ const path = require("path");
 const multer = require("multer");
 const { time } = require("console");
 const app = express();
-const port = 8001; //ポート番号
+const port = 8001;
 
 //起動確認
 app.listen(port, function () {
   console.log(`サーバー起動 ${port}ポート\r\nhttp://localhost:${port}`);
-  CheckGen_dir("./public/upload"); //変換前の動画をアップするディレクトリが存在すればスルー、しなければ生成
-  CheckGen_dir("./public/converted"); //変換後の動画をアップするディレクトリが存在すればスルー、しなければ生成
+  CheckGen_dir("./public/upload"); //変換前の動画をアップロードするディレクトリを生成
+  CheckGen_dir("./public/converted"); //変換後の動画をアップロードするディレクトリを生成
 });
 
 // パス取得
@@ -216,12 +216,9 @@ function output_log() {
   fs.writeFileSync("public/log/log.txt", "logファイルです");
 }
 
-// ディレクトリの存在を確認、あればスルー、なければ生成する関数
+// ディレクトリの存在を確認・なければ生成する関数
 function CheckGen_dir(path) {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path, { recursive: true });
-    console.log('"' + path + '"' + "フォルダを生成しました。");
-  } else {
-    console.log('"' + path + '"' + "フォルダは存在します。");
   }
 }

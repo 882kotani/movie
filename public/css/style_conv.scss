@@ -67,7 +67,7 @@ ul {
         width: 100%;
         text-align: center;
         .input_area {
-          height: 40%;
+          height: 100%;
           width: 100%;
           border: 5px dot rgba(0, 0, 0, 0.6);
           background-color: rgba($color: #e6e6e6, $alpha: 0.6);
@@ -75,7 +75,7 @@ ul {
           text-align: center;
           text-align: center;
           .input_file {
-            height: 50%;
+            height: 100%;
             width: 100%;
             opacity: 0;
           }

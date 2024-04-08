@@ -79,6 +79,7 @@ ul li {
   height: 200px;
 }
 .container main .wrap #input_form .wrap_movie .movie .input_area {
+  height: 100%;
   min-height: 150px;
   width: 100%;
   border: 5px dot rgba(0, 0, 0, 0.6);
