@@ -1,33 +1,8 @@
-body {
-  font-size: 16px;
-}
-h1 {
-  font-size: 3rem;
-}
-
 .container {
   width: 100%;
   height: 100vh;
   background-color: rgba($color: #f2f0f0, $alpha: 1);
-  header {
-    width: 100%;
-    height: auto;
-    max-height: 100px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    border-bottom: solid 2px rgba($color: #000000, $alpha: 1);
-    background-color: rgba($color: #000000, $alpha: 1);
-    color: rgba($color: #ffffff, $alpha: 1);
-    nav {
-      width: 90%;
-      height: 100%;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-  }
+
   main {
     padding: 20px;
     width: 80%;
