@@ -1,0 +1,40 @@
+body {
+  font-size: 16px;
+  width: auto;
+  height: auto;
+}
+h1 {
+  font-size: 3rem;
+}
+
+header {
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  justify-content: center;
+  display: flex;
+  background-color: rgba($color: #000000, $alpha: 1);
+  color: rgba($color: #ffffff, $alpha: 1);
+  nav {
+    width: 90%;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+}
+
+button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+#btn_exe {
+  width: 100px;
+  height: 50px;
+  font-size: 16px;
+  margin: 10px;
+  padding: 10px;
+  color: rgba($color: #ffffff, $alpha: 1);
+  background-color: rgba($color: #000000, $alpha: 1);
+  border-radius: 10px;
+}

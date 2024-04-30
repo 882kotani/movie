@@ -4,18 +4,6 @@ body {
 h1 {
   font-size: 3rem;
 }
-button {
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  color: rgba($color: #ffffff, $alpha: 1);
-  background-color: rgba($color: #000000, $alpha: 1);
-}
-
-button:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
 
 ul {
   li {
@@ -26,29 +14,11 @@ ul {
 
 .container {
   width: 100%;
+  min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
   background-color: rgba($color: #dfdcdc, $alpha: 1);
-  header {
-    width: 100%;
-    height: auto;
-    max-height: 100px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    border-bottom: solid 2px rgba($color: #000000, $alpha: 1);
-    background-color: rgba($color: #000000, $alpha: 1);
-    color: rgba($color: #ffffff, $alpha: 1);
-    nav {
-      width: 90%;
-      height: 100%;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-  }
   main {
     width: 100%;
     height: auto;
@@ -63,12 +33,11 @@ ul {
       padding: 40px;
 
       #input_form {
-        min-height: 200px;
         height: auto;
         width: 100%;
         text-align: center;
         .input_area {
-          height: 100%;
+          height: 200px;
           width: 100%;
           border: 5px dot rgba(0, 0, 0, 0.6);
           background-color: rgba($color: #e6e6e6, $alpha: 0.6);
@@ -79,30 +48,14 @@ ul {
             height: 100%;
             width: 100%;
             opacity: 0;
+            cursor: pointer;
           }
         }
-        .input_file {
-          opacity: 0.5;
-          cursor: pointer;
-        }
-        .preview {
-          width: 100%;
-          height: auto;
-          min-height: 500px;
+        .wrap_select {
           margin: 20px;
-          text-align: center;
         }
         .wrap_btn {
           width: 100%;
-          display: flex;
-          text-align: center;
-          justify-content: center;
-          align-items: center;
-          #btn_exe {
-            width: 100px;
-            height: 50px;
-            font-size: 16px;
-          }
         }
       }
     }

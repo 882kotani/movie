@@ -4,19 +4,21 @@ const path = require("path");
 const multer = require("multer");
 const { time } = require("console");
 const app = express();
-const port = 8001;
-
-//起動確認
-app.listen(port, function () {
-  console.log(`サーバー起動 ${port}ポート\r\nhttp://localhost:${port}`);
-  CheckGen_dir("./public/upload"); //変換前の動画をアップロードするディレクトリを生成
-  CheckGen_dir("./public/converted"); //変換後の動画をアップロードするディレクトリを生成
-});
+const port = 8002;
 
 // パス取得
 app.use(express.static(path.join(__dirname, "public")));
 const path_origin_media = "public/upload/"; //元素材のアップロード先
 const path_conv_media = "public/converted/"; //変換後素材のアップロード先
+
+//起動確認
+app.listen(port, function () {
+  console.log(`サーバー起動 ${port}ポート\r\nhttp://localhost:${port}`);
+  // CheckGen_dir("./public/upload"); //変換前の動画をアップロードするディレクトリを生成
+  // CheckGen_dir("./public/converted"); //変換後の動画をアップロードするディレクトリを生成
+  CheckGen_dir("." + path_origin_media); //変換前の動画をアップロードするディレクトリを生成
+  CheckGen_dir("." + path_conv_media); //変換後の動画をアップロードするディレクトリを生成
+});
 
 //アップロード
 const storage = multer.diskStorage({
@@ -75,8 +77,11 @@ app.post("/comp_conv", upload.single("file"), function (req, res, next) {
     " &";
   const execSync = require("child_process").execSync;
   const stdout = execSync(command);
+  console.log(stdout);
   res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
+  console.log(res);
   deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+  // deleteFile(path_conv_media + o_filename); //アップロードしたファイルの削除
 });
 
 // 変換
@@ -98,7 +103,9 @@ app.post("/conv_conv", upload.single("file"), function (req, res, next) {
   const execSync = require("child_process").execSync;
   const stdout = execSync(command);
   res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
+  console.log(res);
   deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+  // deleteFile(path_conv_media + o_filename); //アップロードしたファイルの削除
   output_log();
 });
 
@@ -141,6 +148,7 @@ app.post("/cut_conv", upload.single("file"), function (req, res, next) {
 
   res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
   deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+  // deleteFile(path_conv_media + o_filename); //アップロードしたファイルの削除
   output_log();
 });
 
@@ -153,7 +161,6 @@ app.post(
     const file1Array = req.files["file1"];
     const file2Array = req.files["file2"];
     const file1Names = file1Array.map((file) => file.originalname);
-    // const file2Names = file2Array.map((file) => file.originalname);
     const file1Paths = file1Array.map((file) => file.path);
     const file2Paths = file2Array.map((file) => file.path);
 
@@ -169,6 +176,7 @@ app.post(
     const stdout = execSync(command);
     res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
     deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+    deleteFile(path_conv_media + o_filename); //アップロードしたファイルの削除
     output_log();
   }
 );
@@ -196,7 +204,8 @@ app.post(
     const execSync = require("child_process").execSync;
     const stdout = execSync(command);
     res.download(path_conv_media + o_filename); //変換したファイルのダウンロード
-    deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除;
+    deleteFile(path_origin_media + i_filename); //アップロードしたファイルの削除
+    // deleteFile(path_conv_media + o_filename); //アップロードしたファイルの削除
     output_log();
   }
 );
