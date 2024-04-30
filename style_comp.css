@@ -1,0 +1,52 @@
+ul li {
+  list-style: none;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #dfdcdc;
+}
+.container main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container main .wrap {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.container main .wrap #input_form {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  margin: 30px auto;
+}
+.container main .wrap #input_form .input_area {
+  height: 200px;
+  width: 100%;
+  border: 5px dot rgba(0, 0, 0, 0.6);
+  background-color: rgba(230, 230, 230, 0.6);
+}
+.container main .wrap #input_form .input_area .input_file {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.container main .wrap #input_form .wrap_btn {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+  align-items: center;
+}/*# sourceMappingURL=style_comp.css.map */
