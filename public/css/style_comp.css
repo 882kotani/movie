@@ -1,16 +1,3 @@
-button {
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
-  background-color: black;
-}
-
-button:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
 ul li {
   list-style: none;
   margin: 0 auto;
@@ -19,6 +6,7 @@ ul li {
 .container {
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #dfdcdc;
@@ -37,53 +25,28 @@ ul li {
   flex-direction: column;
 }
 .container main .wrap #input_form {
-  min-height: 100px;
   height: auto;
   width: 100%;
-  text-align: center;
   margin: 30px auto;
 }
 .container main .wrap #input_form .input_area {
-  height: 100%;
+  height: 200px;
   width: 100%;
   border: 5px dot rgba(0, 0, 0, 0.6);
   background-color: rgba(230, 230, 230, 0.6);
-  margin: 0 auto;
-  text-align: center;
-  text-align: center;
 }
 .container main .wrap #input_form .input_area .input_file {
   height: 100%;
   width: 100%;
-  opacity: 0;
-}
-.container main .wrap #input_form .input_file {
   opacity: 0.5;
   cursor: pointer;
-}
-.container main .wrap #input_form .preview {
-  width: 100%;
-  height: auto;
-  min-height: 500px;
-  margin: 20px;
   text-align: center;
 }
 .container main .wrap #input_form .wrap_btn {
   height: auto;
   width: 100%;
   display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  margin: 20px auto;
-}
-.container main .wrap #input_form .wrap_btn #btn_exe {
-  width: 100px;
-  height: 50px;
-  font-size: 16px;
-}
-.container main .wrap #input_form #btn_exe:hover {
-  opacity: 0.6;
-  cursor: pointer;
+  margin: 30px 0;
+  align-items: center;
 }/*# sourceMappingURL=style_comp.css.map */

@@ -1,27 +1,46 @@
 body {
   font-size: 16px;
+  width: auto;
+  height: auto;
 }
 
 h1 {
   font-size: 3rem;
 }
 
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 header {
   width: 100%;
   height: auto;
   max-height: 100px;
-  align-items: center;
   justify-content: center;
   display: flex;
-  border-bottom: solid 2px black;
   background-color: black;
   color: white;
 }
 header nav {
   width: 90%;
   height: 100%;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   padding: 20px;
+}
+
+button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+#btn_exe {
+  width: 100px;
+  height: 50px;
+  font-size: 16px;
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
 }/*# sourceMappingURL=style_common.css.map */

@@ -1,13 +1,13 @@
 .container {
   width: 100%;
   height: 100vh;
+  // height: auto;
   background-color: rgba($color: #f2f0f0, $alpha: 1);
 
   main {
     padding: 20px;
     width: 80%;
     height: auto;
-    // max-height: 500px;
 
     margin: 0 auto;
     display: flex;
@@ -17,79 +17,17 @@
     .wrap_movie {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: 10px;
-    }
-    .wrap_image {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 10px;
-    }
-
-    .wrap_text {
-      width: 100%;
-      height: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      .left {
-        width: 48%;
-        // min-width: 48%;
-        height: auto;
-        min-height: 300px;
-        background-color: blue($color: #000000);
-        // border-style: solid;
-        text-align: center;
+      column-gap: 20px;
+      #btn_index {
+        width: 200px;
+        height: 80px;
+        font-size: 20px;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        color: rgba($color: #ffffff, $alpha: 1);
+        background-color: rgba($color: #000000, $alpha: 1);
       }
-      .left::before {
-        content: "変換前";
-      }
-      .right {
-        width: 48%;
-        // min-width: 48%;
-        height: auto;
-        min-height: 300px;
-        background-color: red($color: #000000);
-        // border-style: solid;
-        text-align: center;
-      }
-      .right::before {
-        content: "変換後";
-      }
-      .textarea {
-        width: auto;
-        max-width: 100%;
-        height: auto;
-      }
-    }
-    .wrap_btn {
-      // flex-direction: ;
-      width: 100%;
-      height: auto;
-      max-height: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
-  button {
-    margin: 5px;
-    padding: 10px;
-    border-radius: 10px;
-    color: rgba($color: #ffffff, $alpha: 1);
-    background-color: rgba($color: #000000, $alpha: 1);
-  }
-}
-
-// index.html
-#btn_index {
-  width: 200px;
-  height: 80px;
-  font-size: 20px;
-  margin-top: 20px;
-}
-button:hover {
-  opacity: 0.6;
-  cursor: pointer;
 }

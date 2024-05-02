@@ -13,36 +13,41 @@
     <div class="container">
       <header id="header">
         <nav>
-          <h1>動画変換</h1>
+          <h1><a href="/">動画変換</a></h1>
         </nav>
       </header>
       <main>
         <h2>ファイル形式を変換</h2>
         <p>変換後自動的にダウンロードされます</p>
-        <div class="wrap">
-          <form
-            id="input_form"
-            action="/conv_conv"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <div class="input_area">
-              <input class="input_file" type="file" name="file" />
-            </div>
-            <div>
-              <input type="radio" name="conv_radio" value="MOV_to_mp4" />MOV to
-              mp4
-            </div>
-            <div>
-              <input type="radio" name="conv_radio" value="ma4_to_mp3" />m4a to
-              mp3
-            </div>
-
-            <div class="wrap_btn">
-              <button id="btn_exe" type="submit">変換</button>
-            </div>
-          </form>
-        </div>
+        <form
+          id="input_form"
+          action="/conv_conv"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="input_area">
+            <input class="input_file" type="file" name="file" />
+          </div>
+          <div class="wrap_select">
+            <ul>
+              <li>
+                <input type="radio" name="conv_radio" value="MOV_to_mp4" />MOV
+                to mp4
+              </li>
+              <li>
+                <input type="radio" name="conv_radio" value="mxf_to_mp4" />mxf
+                to mp4
+              </li>
+              <li>
+                <input type="radio" name="conv_radio" value="ma4_to_mp3" />m4a
+                to mp3
+              </li>
+            </ul>
+          </div>
+          <div class="wrap_btn">
+            <button id="btn_exe" type="submit">変換</button>
+          </div>
+        </form>
       </main>
     </div>
   </body>
